@@ -20,4 +20,5 @@ public:
 public:
 	void Update();
 	void Draw();
+	void Reset(bool left = false);
 };

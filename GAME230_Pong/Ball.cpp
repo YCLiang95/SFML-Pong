@@ -6,11 +6,11 @@
 Ball::Ball() {
 	x = 400;
 	y = 300;
-	speedx = 240.0f;
-	speedy = 180.0f;
+	speedx = 400.0f;
+	speedy = 300.0f;
 	lastTime = clock();
-	radius = 50.0f;
-	shape.setRadius(50.0f);
+	radius = 10.0f;
+	shape.setRadius(10.0f);
 	shape.setFillColor(sf::Color(255,255,255));
 }
 
@@ -46,12 +46,12 @@ void Ball::Update() {
 				dx = std::max(1.0f, dx);
 				dx = std::min((float)GameManager::getInstance()->width - shape.getRadius() * 2, dx);
 			} else {
-				std::cout << "Right Score!" << std::endl;
-				dx = 400;
-				dy = 300;
+				Reset(true);
+				dx = x;
+				dy = y;
 			}
 		} else {
-			int c = (int)(y + (dx - GameManager::getInstance()->width) * m);
+			int c = (int)(y + (dx + radius - GameManager::getInstance()->width) * m);
 			bool bounce = false;
 			for (int i = 0; i < radius * 2; i++)
 				if (c + i < GameManager::getInstance()-> height && GameManager::getInstance()->right[c + i] == true)
@@ -60,12 +60,10 @@ void Ball::Update() {
 				speedx = -speedx;
 				dx = std::max(1.0f, dx);
 				dx = std::min((float)GameManager::getInstance()->width - shape.getRadius() * 2, dx);
-				std::cout << c << std::endl;
 			} else {
-				std::cout << c << std::endl;
-				
-				dx = 400;
-				dy = 300;
+				Reset();
+				dx = x;
+				dy = y;
 			}
 		}
 
@@ -78,4 +76,13 @@ void Ball::Update() {
 
 void Ball::Draw() {
 	GameManager::getInstance()->window.draw(shape);
+}
+
+void Ball::Reset(bool left) {
+	x = GameManager::getInstance()->width / 2;
+	y = GameManager::getInstance()->height / 2;
+	speedx = GameManager::getInstance()->width / 4 + rand() % (GameManager::getInstance()->width / 4);
+	speedy = GameManager::getInstance()->height / 4 + rand() % (GameManager::getInstance()->height / 4);
+	if (left) speedx *= -1;
+	shape.setPosition(x, y);
 }
