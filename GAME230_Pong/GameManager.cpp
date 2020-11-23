@@ -37,10 +37,10 @@ void GameManager::Draw() {
     ball->Draw();
     ball2->Draw();
 
-    //scoreTextLeft.setString(std::to_string(leftScore));
-    //scoreTextRight.setString(std::to_string(rightScore));
-    //window.draw(scoreTextLeft);
-    //window.draw(scoreTextRight);
+    scoreTextLeft.setString(std::to_string(leftScore));
+    scoreTextRight.setString(std::to_string(rightScore));
+    window.draw(scoreTextLeft);
+    window.draw(scoreTextRight);
 
     for (int i = 0; i < 4; i++)
         peddles[i]->Draw();
@@ -57,15 +57,15 @@ GameManager* GameManager::getInstance(){
 }
 
 void GameManager::LoadFont() {
-    //if (!font.loadFromFile("arial.ttf")) {
-    //    std::cout << "Failed to load Font" << std::endl;
-    //    return;
-    //}
-    //scoreTextLeft.setFont(font);
-    //scoreTextRight.setFont(font);
-    //scoreTextLeft.setCharacterSize(24);
-    //scoreTextRight.setCharacterSize(24);
-    //scoreTextLeft.setFillColor(sf::Color::White);
-    //scoreTextRight.setFillColor(sf::Color::White);
-    //scoreTextRight.setPosition(width - 100, 0);
+    if (!font.loadFromFile("arial.ttf")) {
+        std::cout << "Failed to load Font" << std::endl;
+        return;
+    }
+    scoreTextLeft.setFont(font);
+    scoreTextRight.setFont(font);
+    scoreTextLeft.setCharacterSize(24);
+    scoreTextRight.setCharacterSize(24);
+    scoreTextLeft.setFillColor(sf::Color::White);
+    scoreTextRight.setFillColor(sf::Color::White);
+    scoreTextRight.setPosition(width - 100, 0);
 }

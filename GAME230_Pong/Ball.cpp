@@ -13,9 +13,14 @@ Ball::Ball() {
 	radius = 20.0f;
 	shape.setRadius(20.0f);
 	shape.setFillColor(sf::Color(255,255,255));
-	//if (!buffer.loadFromFile("sound.wav"))
-	//	return;
-	//sound.setBuffer(buffer);
+	if (!buffer.loadFromFile("hit.wav"))
+		return;
+	soundHit.setBuffer(buffer);
+
+	if (!bufferScore.loadFromFile("score.wav"))
+		return;
+	soundScore.setBuffer(bufferScore);
+
 }
 
 void Ball::Update() {
@@ -51,9 +56,10 @@ void Ball::Update() {
 					Particle* p = new Particle(x, y, sf::Color::Blue);
 					GameManager::getInstance()->ps->Add(p);
 				}
-				//sound.play();
+				soundHit.play();
 			} else {
 				Reset(true);
+				GameManager::getInstance()->rightScore += 1;
 				dx = x;
 				dy = y;
 			}
@@ -71,9 +77,10 @@ void Ball::Update() {
 					Particle* p = new Particle(x, y, sf::Color::Blue);
 					GameManager::getInstance()->ps->Add(p);
 				}
-				//sound.play();
+				soundHit.play();
 			} else {
 				Reset();
+				GameManager::getInstance()->leftScore += 1;
 				dx = x;
 				dy = y;
 			}
@@ -94,7 +101,7 @@ void Ball::Draw() {
 void Ball::Reset(bool left) {
 
 	//Play Sound
-
+	soundScore.play();
 
 	//Generate Particles
 	for (int i = 0; i < 50; i++) {
