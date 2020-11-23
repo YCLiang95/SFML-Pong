@@ -2,6 +2,8 @@
 #include "GameManager.h"
 #include <math.h>
 #include <iostream>
+#include "Particle.h"
+#include "ParticleSystem.h"
 
 Ball::Ball() {
 	x = 400;
@@ -11,6 +13,9 @@ Ball::Ball() {
 	radius = 20.0f;
 	shape.setRadius(20.0f);
 	shape.setFillColor(sf::Color(255,255,255));
+	//if (!buffer.loadFromFile("sound.wav"))
+	//	return;
+	//sound.setBuffer(buffer);
 }
 
 void Ball::Update() {
@@ -42,6 +47,11 @@ void Ball::Update() {
 				speedx = -speedx;
 				dx = std::max(1.0f, dx);
 				dx = std::min((float)GameManager::getInstance()->width - shape.getRadius() * 2, dx);
+				for (int i = 0; i < 50; i++) {
+					Particle* p = new Particle(x, y, sf::Color::Blue);
+					GameManager::getInstance()->ps->Add(p);
+				}
+				//sound.play();
 			} else {
 				Reset(true);
 				dx = x;
@@ -57,6 +67,11 @@ void Ball::Update() {
 				speedx = -speedx;
 				dx = std::max(1.0f, dx);
 				dx = std::min((float)GameManager::getInstance()->width - shape.getRadius() * 2, dx);
+				for (int i = 0; i < 50; i++) {
+					Particle* p = new Particle(x, y, sf::Color::Blue);
+					GameManager::getInstance()->ps->Add(p);
+				}
+				//sound.play();
 			} else {
 				Reset();
 				dx = x;
@@ -75,7 +90,18 @@ void Ball::Draw() {
 	GameManager::getInstance()->window.draw(shape);
 }
 
+//Actually should be called hit
 void Ball::Reset(bool left) {
+
+	//Play Sound
+
+
+	//Generate Particles
+	for (int i = 0; i < 50; i++) {
+		Particle* p = new Particle(x ,y, sf::Color::Green);
+		GameManager::getInstance()->ps->Add(p);
+	}
+
 	x = GameManager::getInstance()->width / 2;
 	y = GameManager::getInstance()->height / 2;
 	speedx = GameManager::getInstance()->width / 4 + rand() % (GameManager::getInstance()->width / 4);

@@ -7,9 +7,13 @@ void Particle::Draw() {
 
 void Particle::Update() {
 	timeSinceCreated += GameManager::getInstance()->deltaTime;
-	if (timeSinceCreated > lifeSpan)
+	if (timeSinceCreated > lifeSpan) {
+		isDead = true;
 		return;
+	}
 
 	x += speedx * GameManager::getInstance()->deltaTime;
 	y += speedy * GameManager::getInstance()->deltaTime;
+
+	shape.setPosition(x , y);
 }

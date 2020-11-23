@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 
 class Ball {
 public:
@@ -12,6 +13,8 @@ public:
 	float speedx, speedy;
 
 	sf::CircleShape shape;
+	sf::SoundBuffer buffer;
+	sf::Sound sound;
 
 	Ball();
 

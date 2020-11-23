@@ -26,6 +26,9 @@ void GameManager::Update() {
         peddles[i]->Update();
     ball->Update();
     ball2->Update();
+
+    ps->Update();
+
     Draw();
 }
 
@@ -41,6 +44,8 @@ void GameManager::Draw() {
 
     for (int i = 0; i < 4; i++)
         peddles[i]->Draw();
+
+    ps->Draw();
 
     window.display();
 }

@@ -3,6 +3,7 @@
 #include <iostream>
 #include "Ball.h"
 #include "Peddle.h"
+#include "ParticleSystem.h"
 
 class GameManager {
     GameManager() {
@@ -28,6 +29,8 @@ class GameManager {
 
         lastTime = clock();
         deltaTime = 0;
+
+        ps = ParticleSystem::getInstance();
     }
 
 
@@ -60,6 +63,8 @@ public:
     sf::Text scoreTextRight;
 
     float timeScale;
+
+    ParticleSystem* ps;
 
     ~GameManager() {
         delete(ball);
