@@ -16,6 +16,14 @@ void Obstacle::Update() {
 		}
 	}
 	shape.setPosition(x, y);
+
+	if (pow(GameManager::getInstance()->ball->x - x, 2) + pow(GameManager::getInstance()->ball->y - y, 2) <= pow(45, 2)){
+		GameManager::getInstance()->ball->speedx *= -1;
+	}
+
+	if (pow(GameManager::getInstance()->ball2->x - x, 2) + pow(GameManager::getInstance()->ball2->y - y, 2) <= pow(45, 2)) {
+		GameManager::getInstance()->ball2->speedx *= -1;
+	}
 }
 
 void Obstacle::Draw() {

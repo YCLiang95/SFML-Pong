@@ -104,7 +104,7 @@ public:
         delete(ball);
         //for (int i = 0; i < 4; i++)
             //delete (peddles[i]);
-        delete(peddles);
+        delete peddles;
         delete(re);
         delete(ob);
     }
