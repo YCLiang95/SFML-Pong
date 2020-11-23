@@ -30,6 +30,10 @@ Ball::Ball() {
 }
 
 void Ball::Update() {
+
+	if (!GameManager::getInstance()->isRunning)
+		return;
+
 	float  dx = x + speedx * GameManager::getInstance()->deltaTime;
 	float dy = y + speedy * GameManager::getInstance()->deltaTime;
 
@@ -117,10 +121,12 @@ void Ball::Reset(bool left) {
 		GameManager::getInstance()->ps->Add(p);
 	}
 
+	GameManager::getInstance()->timeScale += 0.1f;
+
 	x = GameManager::getInstance()->width / 2;
 	y = GameManager::getInstance()->height / 2;
-	speedx = GameManager::getInstance()->width / 4 + rand() % (GameManager::getInstance()->width / 4);
-	speedy = GameManager::getInstance()->height / 4 + rand() % (GameManager::getInstance()->height / 4);
+	speedx = GameManager::getInstance()->width / 6 + rand() % (GameManager::getInstance()->width / 6);
+	speedy = GameManager::getInstance()->height / 6 + rand() % (GameManager::getInstance()->height / 6);
 	if (rand() % 2 == 0)
 		speedy *= -1;
 	if (left) speedx *= -1;

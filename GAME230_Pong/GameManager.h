@@ -33,6 +33,7 @@ class GameManager {
         ps = ParticleSystem::getInstance();
 
         plusPressed = false;
+        isRunning = false;
     }
 
 
@@ -64,9 +65,13 @@ public:
     sf::Text scoreTextLeft;
     sf::Text scoreTextRight;
 
+    sf::Text winningText;
+
     bool plusPressed;
 
     float timeScale;
+
+    bool isRunning;
 
     ParticleSystem* ps;
 

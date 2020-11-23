@@ -5,6 +5,23 @@ GameManager* GameManager::instance;
 
 void GameManager::Update() {
 
+    if (!isRunning) {
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Enter)) {
+            isRunning = true;
+            leftScore = 0;
+            rightScore = 0;
+            ball->Reset();
+            ball2->Reset();
+            timeScale = 1.0f;
+        }
+    } else if (leftScore > 5 || rightScore > 5) {
+        isRunning = false;
+        if (leftScore > 5)
+            winningText.setString("Left Won! Press Enter to Play Again!");
+        else
+            winningText.setString("Right Won! Press Enter to Play Again!");
+    }
+
     if (!plusPressed && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         plusPressed = true;
         timeScale *= 2;
@@ -50,6 +67,9 @@ void GameManager::Draw() {
     window.draw(scoreTextLeft);
     window.draw(scoreTextRight);
 
+    if (!isRunning)
+        window.draw(winningText);
+
     for (int i = 0; i < 4; i++)
         peddles[i]->Draw();
 
@@ -76,4 +96,9 @@ void GameManager::LoadFont() {
     scoreTextLeft.setFillColor(sf::Color::White);
     scoreTextRight.setFillColor(sf::Color::White);
     scoreTextRight.setPosition(width - 100, 0);
+
+    winningText.setFont(font);
+    winningText.setFillColor(sf::Color::White);
+    winningText.setPosition(300.0f, 500.0f);
+    winningText.setString("Press Enter to Start");
 }
