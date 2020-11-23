@@ -1,11 +1,12 @@
 #pragma once
-#include "main.h"
+#include <SFML/Graphics.hpp>
+#include "Ball.h"
 
 class GameManager {
     GameManager() {
-        height = 800;
-        width = 600;
-        window.create(sf::VideoMode(height, width), "Pong");
+        width = 800;
+        height = 600;
+        window.create(sf::VideoMode(width, height), "Pong");
     }
 
 public:
@@ -16,6 +17,8 @@ public:
     static GameManager* getInstance();
     void Draw();
     void Update();
+
+    Ball ball;
 
 private:
     static GameManager* instance;

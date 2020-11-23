@@ -1,13 +1,19 @@
 #pragma once
-#include "main.h"
+#include <SFML/Graphics.hpp>
 
 class Ball {
 public:
 	//The x, y postion of the ball
-	double x, y;
+	float x, y;
 
 	//The direction of the ball
-	double speedx, speedy;
+	float speedx, speedy;
+
+	clock_t lastTime;
+
+	sf::CircleShape shape;
+
+	Ball();
 
 public:
 	void Update();

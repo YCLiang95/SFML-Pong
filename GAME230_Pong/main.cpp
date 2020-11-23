@@ -6,5 +6,6 @@ int main(){
         gm->Update();
     }
     delete gm;
+    return 0;
 }
 
