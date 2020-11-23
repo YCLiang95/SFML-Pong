@@ -11,8 +11,6 @@ public:
 	//The direction of the ball
 	float speedx, speedy;
 
-	clock_t lastTime;
-
 	sf::CircleShape shape;
 
 	Ball();

@@ -4,6 +4,10 @@
 GameManager* GameManager::instance;
 
 void GameManager::Update() {
+
+    deltaTime = (float)(clock() - lastTime) / CLOCKS_PER_SEC * GameManager::getInstance()->timeScale;
+    lastTime = clock();
+
     sf::Event event;
     while (window.pollEvent(event))
     {

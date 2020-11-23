@@ -9,8 +9,6 @@ public:
 	bool AI;
 	bool mouse;
 
-	clock_t lastTime;
-
 	sf::RectangleShape shape;
 
 public:

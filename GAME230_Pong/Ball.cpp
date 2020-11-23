@@ -8,17 +8,14 @@ Ball::Ball() {
 	y = 300;
 	speedx = 400.0f;
 	speedy = 300.0f;
-	lastTime = clock();
 	radius = 20.0f;
 	shape.setRadius(20.0f);
 	shape.setFillColor(sf::Color(255,255,255));
 }
 
 void Ball::Update() {
-	float deltaTime = (float)(clock() - lastTime) / CLOCKS_PER_SEC * GameManager::getInstance()->timeScale;
-	lastTime = clock();
-	float  dx = x + speedx * deltaTime;
-	float dy = y + speedy * deltaTime;
+	float  dx = x + speedx * GameManager::getInstance()->deltaTime;
+	float dy = y + speedy * GameManager::getInstance()->deltaTime;
 
 	if (dy < 0 || dy > GameManager::getInstance()->height - shape.getRadius() * 2) {
 		speedy = -speedy;

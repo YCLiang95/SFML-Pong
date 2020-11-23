@@ -25,6 +25,9 @@ class GameManager {
         rightScore = 0.0f;
 
         timeScale = 1.0f;
+
+        lastTime = clock();
+        deltaTime = 0;
     }
 
 
@@ -48,6 +51,9 @@ public:
 
     int leftScore;
     int rightScore;
+
+    clock_t lastTime;
+    float deltaTime;
 
     sf::Font font;
     sf::Text scoreTextLeft;

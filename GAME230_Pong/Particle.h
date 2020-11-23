@@ -8,6 +8,8 @@ public:
 	float x, y;
 	float speedx, speedy;
 
+	sf::CircleShape shape;
+
 	void Update();
 	void Draw();
 };

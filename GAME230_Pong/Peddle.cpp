@@ -3,13 +3,9 @@
 #include<iostream>
 
 void Peddle::Update() {
-
-	float deltaTime = (float)(clock() - lastTime) / CLOCKS_PER_SEC * GameManager::getInstance()->timeScale;
-	lastTime = clock();
-
 	//AI controled peddle
 	if (AI) {
-		y += speedY * deltaTime;;
+		y += speedY * GameManager::getInstance()->deltaTime;;
 		if (y > GameManager::getInstance()->height - 100) {
 			y = GameManager::getInstance()->height - 100;
 			speedY *= -1;
@@ -26,17 +22,17 @@ void Peddle::Update() {
 			if (localPosition.y + 100 > GameManager::getInstance()->height) localPosition.y = GameManager::getInstance()->height - 100;
 
 			if (y > localPosition.y)
-				y -= std::max(speedY, y - localPosition.y) * deltaTime;
+				y -= std::max(speedY, y - localPosition.y) * GameManager::getInstance()->deltaTime;
 			else
-				y += std::max(speedY, localPosition.y - y) * deltaTime;
+				y += std::max(speedY, localPosition.y - y) * GameManager::getInstance()->deltaTime;
 		}
 		//Keyboard Control
 		else {
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-				y -= speedY * deltaTime;
+				y -= speedY * GameManager::getInstance()->deltaTime;
 				if (y < 0) y = 0;
 			} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-				y += speedY * deltaTime;
+				y += speedY * GameManager::getInstance()->deltaTime;
 				if (y + 100 > GameManager::getInstance()->height)
 					y = GameManager::getInstance()->height - 100;
 			}
@@ -67,8 +63,6 @@ Peddle::Peddle(float x, float y, bool AI, bool mouse) {
 
 	speedX = 0.0f;
 	speedY = 250.0f;
-
-	lastTime = clock();
 
 	shape.setSize(sf::Vector2f(10, 100));
 	if (AI)

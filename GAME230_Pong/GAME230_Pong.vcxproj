@@ -155,6 +155,7 @@
     <ClCompile Include="Ball.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Particle.cpp" />
     <ClCompile Include="ParticleSystem.cpp" />
     <ClCompile Include="Peddle.cpp" />
   </ItemGroup>
