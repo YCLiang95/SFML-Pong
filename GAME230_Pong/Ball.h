@@ -13,8 +13,8 @@ public:
 	float speedx, speedy;
 
 	sf::CircleShape shape;
-	sf::SoundBuffer buffer;
-	sf::Sound sound;
+	//sf::SoundBuffer buffer;
+	//sf::Sound sound;
 
 	Ball();
 
