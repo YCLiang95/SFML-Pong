@@ -1,5 +1,4 @@
 #include "main.h"
-#include <cstdlib>
 
 int main(){
     GameManager* gm = gm->getInstance();
@@ -7,8 +6,8 @@ int main(){
     while (!gm->gameOver){
         gm->Update();
     }
-    delete gm;
-    exit(0);
+    //delete gm;
+    //gm->~GameManager();
     return 0;
 }
 

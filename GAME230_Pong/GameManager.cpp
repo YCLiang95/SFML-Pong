@@ -5,7 +5,15 @@ GameManager* GameManager::instance;
 
 void GameManager::Update() {
 
-    deltaTime = (float)(clock() - lastTime) / CLOCKS_PER_SEC * GameManager::getInstance()->timeScale;
+    if (!plusPressed && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        plusPressed = true;
+        timeScale *= 2;
+    }
+
+    if (plusPressed && !sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+        plusPressed = false;
+
+    deltaTime = (float)(clock() - lastTime) / CLOCKS_PER_SEC * timeScale;
     lastTime = clock();
 
     sf::Event event;

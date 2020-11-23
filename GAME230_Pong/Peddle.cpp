@@ -40,7 +40,7 @@ void Peddle::Update() {
 	}
 
 	int t = (int)y;
-	for (int i = 0; i < 100; i++) {
+  	for (int i = 0; i < 100; i++) {
 		if (t + i < GameManager::getInstance()->height)
 			if (x < GameManager::getInstance()->width / 2)
 				GameManager::getInstance()->left[t + i] = true;

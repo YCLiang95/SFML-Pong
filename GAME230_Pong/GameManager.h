@@ -31,6 +31,8 @@ class GameManager {
         deltaTime = 0;
 
         ps = ParticleSystem::getInstance();
+
+        plusPressed = false;
     }
 
 
@@ -62,14 +64,16 @@ public:
     sf::Text scoreTextLeft;
     sf::Text scoreTextRight;
 
+    bool plusPressed;
+
     float timeScale;
 
     ParticleSystem* ps;
 
     ~GameManager() {
         delete(ball);
-        for (int i = 0; i < 4; i++)
-            delete (peddles[i]);
+        //for (int i = 0; i < 4; i++)
+            //delete (peddles[i]);
         delete(peddles);
     }
 
