@@ -98,6 +98,8 @@ void Ball::Update() {
 
 	}
 
+	ParticleSystem::getInstance()->Add(new Particle(x + radius / 2, y + radius / 2, sf::Color::Blue, 0.2f));
+
 	x = dx;
 	y = dy;
 	shape.setPosition(x, y);

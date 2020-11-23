@@ -1,5 +1,7 @@
 #include "Peddle.h"
 #include "GameManager.h"
+#include "ParticleSystem.h"
+#include "Particle.h"
 #include<iostream>
 
 void Peddle::Update() {
@@ -38,6 +40,8 @@ void Peddle::Update() {
 			}
 		}
 	}
+
+	ParticleSystem::getInstance()->Add(new Particle(x, y + 50, sf::Color::Red, 0.2f));
 
 	int t = (int)y;
   	for (int i = 0; i < 100; i++) {

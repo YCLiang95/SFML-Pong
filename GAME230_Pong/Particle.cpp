@@ -7,7 +7,7 @@ void Particle::Draw() {
 
 void Particle::Update() {
 	timeSinceCreated += GameManager::getInstance()->deltaTime;
-	if (timeSinceCreated > lifeSpan) {
+	if (timeSinceCreated > lifespan) {
 		isDead = true;
 		return;
 	}

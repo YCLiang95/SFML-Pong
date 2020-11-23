@@ -23,7 +23,7 @@ void Obstacle::Draw() {
 }
 
 Obstacle::Obstacle() {
-	x = GameManager::getInstance()->width / 2 + 12.5f;
+	x = 412.5;
 	y = 0;
 	shape.setRadius(25);
 	shape.setFillColor(sf::Color::Blue);
