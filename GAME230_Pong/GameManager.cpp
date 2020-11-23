@@ -12,13 +12,25 @@ void GameManager::Update() {
             gameOver = true;
         }
     }
-    ball.Update();
+
+    for (int i = 0; i < height; i++) {
+        left[i] = false;
+        right[i] = false;
+    }
+
+    for (int i = 0; i < 4; i++)
+        peddles[i]->Update();
+    ball->Update();
     Draw();
 }
 
 void GameManager::Draw() {
     window.clear();
-    ball.Draw();
+    ball->Draw();
+
+    for (int i = 0; i < 4; i++)
+        peddles[i]->Draw();
+
     window.display();
 }
 

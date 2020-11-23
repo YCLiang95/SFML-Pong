@@ -9,18 +9,12 @@ public:
 	bool AI;
 	bool mouse;
 
+	clock_t lastTime;
+
 	sf::RectangleShape shape;
 
 public:
-	Peddle(float x, float y, bool AI, bool mouse) {
-		this->x = x;
-		this->y = y;
-		this->AI = AI;
-		this->mouse = mouse;
-		shape.setSize(sf::Vector2f(20, 50));
-		shape.setFillColor(sf::Color(255,255,255));
-
-	}
+	Peddle(float x, float y, bool AI, bool mouse);
 
 	void Update();
 	void Draw();
