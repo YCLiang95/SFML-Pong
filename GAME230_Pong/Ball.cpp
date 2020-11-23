@@ -9,8 +9,8 @@ Ball::Ball() {
 	speedx = 400.0f;
 	speedy = 300.0f;
 	lastTime = clock();
-	radius = 10.0f;
-	shape.setRadius(10.0f);
+	radius = 20.0f;
+	shape.setRadius(20.0f);
 	shape.setFillColor(sf::Color(255,255,255));
 }
 
@@ -83,6 +83,8 @@ void Ball::Reset(bool left) {
 	y = GameManager::getInstance()->height / 2;
 	speedx = GameManager::getInstance()->width / 4 + rand() % (GameManager::getInstance()->width / 4);
 	speedy = GameManager::getInstance()->height / 4 + rand() % (GameManager::getInstance()->height / 4);
+	if (rand() % 2 == 0)
+		speedy *= -1;
 	if (left) speedx *= -1;
 	shape.setPosition(x, y);
 }

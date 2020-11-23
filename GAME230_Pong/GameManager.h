@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Ball.h"
 #include "Peddle.h"
 
@@ -10,6 +11,7 @@ class GameManager {
         window.create(sf::VideoMode(width, height), "Pong");
 
         ball = new Ball();
+        ball2 = new Ball();
         peddles[0] = new Peddle(0, 0, false, true);
         peddles[1] = new Peddle(790, 0, false, false);
 
@@ -35,8 +37,10 @@ public:
     static GameManager* getInstance();
     void Draw();
     void Update();
+    void LoadFont();
 
     Ball* ball;
+    Ball* ball2;
     Peddle* peddles[4];
 
     bool* left;
@@ -45,12 +49,16 @@ public:
     int leftScore;
     int rightScore;
 
+    sf::Font font;
+    sf::Text scoreTextLeft;
+    sf::Text scoreTextRight;
+
     float timeScale;
 
     ~GameManager() {
         delete(ball);
-        //for (int i = 0; i < 4; i++)
-            //delete (peddles[i]);
+        for (int i = 0; i < 4; i++)
+            delete (peddles[i]);
         delete(peddles);
     }
 

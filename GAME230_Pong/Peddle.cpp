@@ -9,7 +9,14 @@ void Peddle::Update() {
 
 	//AI controled peddle
 	if (AI) {
-
+		y += speedY * deltaTime;;
+		if (y > GameManager::getInstance()->height - 100) {
+			y = GameManager::getInstance()->height - 100;
+			speedY *= -1;
+		} else if (y < 0) {
+			y = 0;
+			speedY *= -1;
+		}
 	} else {
 		//Mouse Control
 		if (mouse) {
@@ -59,11 +66,13 @@ Peddle::Peddle(float x, float y, bool AI, bool mouse) {
 	this->mouse = mouse;
 
 	speedX = 0.0f;
-	speedY = 150.0f;
+	speedY = 250.0f;
 
 	lastTime = clock();
 
 	shape.setSize(sf::Vector2f(10, 100));
-	shape.setFillColor(sf::Color(255, 255, 255));
-
+	if (AI)
+		shape.setFillColor(sf::Color(255, 255, 255));
+	else
+		shape.setFillColor(sf::Color(255, 0, 0));
 }
