@@ -21,6 +21,12 @@ Ball::Ball() {
 		return;
 	soundScore.setBuffer(bufferScore);
 
+	if (!texture.loadFromFile("ball.png")){
+		std::cout << "Faild to load image" << std::endl;
+		return;
+	}
+	sprite.setTexture(texture);
+	sprite.setScale(0.15f, 0.15f);
 }
 
 void Ball::Update() {
@@ -91,10 +97,12 @@ void Ball::Update() {
 	x = dx;
 	y = dy;
 	shape.setPosition(x, y);
+	sprite.setPosition(x, y);
 }
 
 void Ball::Draw() {
 	GameManager::getInstance()->window.draw(shape);
+	GameManager::getInstance()->window.draw(sprite);
 }
 
 //Actually should be called hit

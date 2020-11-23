@@ -19,6 +19,10 @@ public:
 	sf::SoundBuffer bufferScore;
 	sf::Sound soundScore;
 
+	sf::Texture texture;
+	sf::Sprite sprite;
+	
+
 	Ball();
 
 public:
