@@ -7,3 +7,5 @@
 #include "GameManager.h"
 #include "Particle.h"
 #include "ParticleSystem.h"
+#include "Repulsor.h"
+#include "Obstacle.h"

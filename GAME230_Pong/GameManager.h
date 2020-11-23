@@ -4,6 +4,8 @@
 #include "Ball.h"
 #include "Peddle.h"
 #include "ParticleSystem.h"
+#include "Repulsor.h"
+#include "Obstacle.h"
 
 class GameManager {
     GameManager() {
@@ -31,6 +33,8 @@ class GameManager {
         deltaTime = 0;
 
         ps = ParticleSystem::getInstance();
+        re = new Repulsor;
+        ob = new Obstacle;
 
         plusPressed = false;
         isRunning = false;
@@ -58,6 +62,9 @@ public:
     int leftScore;
     int rightScore;
 
+    Repulsor* re;
+    Obstacle* ob;
+
     clock_t lastTime;
     float deltaTime;
 
@@ -80,6 +87,8 @@ public:
         //for (int i = 0; i < 4; i++)
             //delete (peddles[i]);
         delete(peddles);
+        delete(re);
+        delete(ob);
     }
 
 private:

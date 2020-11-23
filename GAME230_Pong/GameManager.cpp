@@ -51,6 +51,8 @@ void GameManager::Update() {
         peddles[i]->Update();
     ball->Update();
     ball2->Update();
+    re->Update();
+    ob->Update();
 
     ps->Update();
 
@@ -74,6 +76,8 @@ void GameManager::Draw() {
         peddles[i]->Draw();
 
     ps->Draw();
+    re->Draw();
+    ob->Draw();
 
     window.display();
 }
