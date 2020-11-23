@@ -20,6 +20,7 @@ void GameManager::Update() {
             winningText.setString("Left Won! Press Enter to Play Again!");
         else
             winningText.setString("Right Won! Press Enter to Play Again!");
+        victorySound.play();
     }
 
     if (!plusPressed && sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
